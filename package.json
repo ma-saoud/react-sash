@@ -52,5 +52,13 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ma-saoud/react-sash.git"
+  },
+  "homepage": "https://github.com/ma-saoud/react-sash#readme",
+  "bugs": {
+    "url": "https://github.com/ma-saoud/react-sash/issues"
   }
 }
