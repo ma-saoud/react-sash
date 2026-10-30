@@ -1,6 +1,6 @@
 {
   "name": "react-sash",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Resizable split panes for React, like the panels in VS Code. Any number of panes; drag to resize, double-click to reset.",
   "keywords": [
     "react",
