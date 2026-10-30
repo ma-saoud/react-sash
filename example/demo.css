@@ -1,0 +1,108 @@
+/* Page styles for the demo only. The component's own styles are in src/styles.css. */
+
+/* theme the bars */
+:root {
+  --sash-divider-size: 6px;
+  --sash-divider-color: #e5e7eb;
+  --sash-divider-active-color: #3b82f6;
+}
+/* animate the double-click reset, but not dragging */
+.sash:not(.sash--dragging) > .sash__pane { transition: flex-grow 0.3s ease; }
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+}
+h2 { margin: 0; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+p { margin: 0 0 10px; }
+ul { margin: 0 0 10px; padding-left: 20px; }
+li { margin-bottom: 4px; }
+.muted { color: #6b7280; font-size: 13px; }
+
+.site { height: 100%; display: flex; flex-direction: column; }
+.site__body { flex: 1; min-height: 0; }
+
+/* ----- Top bar ----- */
+.topbar {
+  flex: 0 0 56px;
+  display: flex; align-items: center; gap: 24px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.brand { font-size: 17px; font-weight: 700; color: #2563eb; }
+.search { flex: 0 1 360px; padding: 6px 14px; border-radius: 8px; background: #f3f4f6; color: #9ca3af; }
+.hint { margin-left: auto; color: #6b7280; font-size: 13px; overflow: hidden; text-overflow: ellipsis; }
+
+/* every panel fills its pane, so the background covers it */
+.folders, .list, .message, .reply { min-height: 100%; }
+
+.pane-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.size {
+  margin-left: auto; padding: 1px 8px;
+  border-radius: 999px;
+  background: #eff6ff; color: #2563eb;
+  font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+
+/* ----- Folders ----- */
+.folders { padding: 16px 10px; background: #f9fafb; }
+.compose {
+  margin: 0 4px 14px; padding: 9px 0;
+  border-radius: 10px;
+  background: #2563eb; color: #ffffff;
+  text-align: center; font-weight: 600;
+}
+.folder {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap; overflow: hidden;
+}
+.folder--active { background: #dbeafe; color: #1d4ed8; font-weight: 600; }
+.folder__count { margin-left: auto; font-size: 12px; font-weight: 600; }
+.folders__heading {
+  display: flex; align-items: center;
+  margin: 18px 12px 6px;
+  color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.folders__heading .size { text-transform: none; letter-spacing: 0; }
+.dot { flex: none; width: 9px; height: 9px; border-radius: 50%; }
+
+/* ----- Message list ----- */
+.list { padding: 16px 0 0; }
+.list .pane-head { padding: 0 16px; }
+.mail { padding: 10px 16px; border-left: 3px solid transparent; border-bottom: 1px solid #f3f4f6; }
+.mail--active { background: #eff6ff; border-left-color: #2563eb; }
+.mail__top { display: flex; gap: 8px; }
+.mail__from { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mail__time { color: #6b7280; font-size: 12px; white-space: nowrap; }
+.mail--unread .mail__from, .mail--unread .mail__subject { font-weight: 700; }
+.mail__subject, .mail__preview { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mail__preview { color: #6b7280; font-size: 13px; }
+
+/* ----- Open message and reply ----- */
+.message { padding: 16px 24px; }
+.message__meta { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.avatar {
+  flex: none; width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: #fce7f3; color: #be185d; font-weight: 700; font-size: 13px;
+}
+.reply { display: flex; flex-direction: column; gap: 8px; padding: 14px 24px; background: #f9fafb; }
+.reply__box {
+  flex: 1; min-height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db; border-radius: 8px;
+  background: #ffffff; color: #9ca3af;
+}
+.reply__send {
+  align-self: flex-end;
+  padding: 6px 18px;
+  border-radius: 8px;
+  background: #2563eb; color: #ffffff; font-weight: 600;
+}

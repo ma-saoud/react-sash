@@ -1,13 +1,13 @@
 # react-sash
 
-Resizable split panes for React: the draggable panels you know from VS Code.
+Resizable split panes for React: drag the bar between two panels to resize them.
 
 [![npm](https://img.shields.io/npm/v/react-sash)](https://www.npmjs.com/package/react-sash)
 [![license](https://img.shields.io/npm/l/react-sash)](./LICENSE)
 
-![react-sash running a VS Code-style layout: dragging the sidebar, the terminal and the outline, then double-clicking to reset](docs/demo.gif)
+![react-sash demo: a mailbox whose folder list, message list, message and reply box are resized by dragging the bars, then reset with a double-click](docs/demo.gif)
 
-- **Any number of panes**, side by side or stacked. Nest them to build full IDE layouts.
+- **Any number of panes**, side by side or stacked. Nest them for more complex layouts.
 - **Drag** with mouse, touch or pen. **Double-click** a divider to reset.
 - **Controlled or uncontrolled.** Keep the sizes in your own state to save and restore them.
 - **Small:** one component, no dependencies, under 1 kB of JavaScript gzipped.
@@ -42,20 +42,19 @@ export function App() {
 
 ## Examples
 
-### A VS Code layout
+### Nested layouts
 
-Nest one `Sash` inside another. This is the layout in the GIF above:
+Put one `Sash` inside another. This is the mailbox in the demo above:
 
 ```tsx
-<Sash defaultSizes={[18, 60, 22]}>
-  <Explorer />
+<Sash defaultSizes={[18, 34, 48]}>
+  <Folders />
+  <MessageList />
 
-  <Sash direction="vertical" defaultSizes={[70, 30]}>
-    <Editor />
-    <Terminal />
+  <Sash direction="vertical" defaultSizes={[68, 32]}>
+    <Message />
+    <ReplyBox />
   </Sash>
-
-  <Outline />
 </Sash>
 ```
 
@@ -144,12 +143,13 @@ The built-in styles have zero specificity, so any class of your own overrides th
 | `sash__pane`         | Each pane                             |
 | `sash__divider`      | Each bar between two panes            |
 
-For example, the thin bars that fade to blue in the demo:
+For example, thin light bars that fade to blue on hover:
 
 ```css
 :root {
   --sash-divider-size: 4px;
-  --sash-divider-color: #2b2b2b;
+  --sash-divider-color: #e5e7eb;
+  --sash-divider-active-color: #3b82f6;
 }
 .sash__divider {
   transition: background-color 0.15s 0.1s;
@@ -168,13 +168,13 @@ For example, the thin bars that fade to blue in the demo:
 
 ```bash
 npm install
-npm run dev        # demos at http://localhost:5173 and http://localhost:5173/vscode.html
+npm run dev        # the mailbox demo at http://localhost:5173
 npm test
 npm run typecheck
 npm run build      # compiles src/ to dist/
 ```
 
-The GIF in this README is a recording of `example/vscode.html`.
+The GIF at the top of this README is a recording of that demo (`example/main.tsx`).
 
 ## License
 
